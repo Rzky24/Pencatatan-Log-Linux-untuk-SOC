@@ -81,7 +81,16 @@ Jawaban yang Benar
 
 Apa isi pesan kernel dari Yama di /var/log/syslog ?
 
-Becoming mindful.
+ubuntu@thm-vm:/var/log$ cat /var/log/syslog | grep "yama"
+2025-08-13T13:41:48.176648+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
+2025-08-13T13:57:19.908951+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
+2025-08-28T14:02:07.691518+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
+2025-09-09T13:45:41.659295+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
+2026-02-26T01:25:33.236117+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
+ubuntu@thm-vm:/var/log$ 
+
+
+jawaban : Becoming mindful.
 
 Jawaban yang Benar
 
@@ -138,12 +147,23 @@ Jawablah pertanyaan-pertanyaan di bawah ini.
 Lanjutkan dengan VM dan gunakan file /var/log/auth.log .
 Alamat IP mana yang gagal masuk sebagai beberapa pengguna melalui SSH?
 
-10.14.94.82
+ubuntu@thm-vm:/var/log$ cat auth.log | grep ssh
+2025-08-13T15:56:18.903048+00:00 thm-vm sshd[1176]: Failed password for root from 10.14.94.82 port 57696 ssh2
+2025-08-13T15:56:22.556480+00:00 thm-vm sshd[1176]: Connection closed by authenticating user root 10.14.94.82 port 57696 [preauth]
+
+
+jawaban : 10.14.94.82
 
 Jawaban yang Benar
 Pengguna mana yang dibuat dan ditambahkan ke grup "sudo"?
 
-xerxes
+ubuntu@thm-vm:/var/log$ cat /var/log/auth.log | grep sudo
+2025-08-13T18:04:29.425939+00:00 thm-vm usermod[1458]: add 'xerxes' to group 'sudo'
+2025-08-13T18:04:29.426146+00:00 thm-vm usermod[1458]: add 'xerxes' to shadow group 'sudo'
+<img width="1340" height="664" alt="image" src="https://github.com/user-attachments/assets/a28cf971-89d9-4253-9d6b-b449d89fbc14" />
+
+
+jawaban : xerxes
 
 Jawaban yang Benar
 
