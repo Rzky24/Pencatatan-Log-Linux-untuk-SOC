@@ -63,14 +63,15 @@ Gunakan  file /var/log/syslog pada VM untuk menjawab pertanyaan-pertanyaan terse
 Domain server waktu mana yang dihubungi VM untuk menyinkronkan waktunya?
 
 
-Saya memeriksa /var/log/syslog dan mencari kata "sync" menggunakan grep.
-<img width="844" height="78" alt="image" src="https://github.com/user-attachments/assets/91b66a9b-dd44-4798-ae7c-6eb72c1ecf5a" />
- cd /var/log
+
+
+ubuntu@thm-vm:~$ cd /var/log
 ubuntu@thm-vm:/var/log$ ls
 README            apt       cloud-init-output.log  dmesg.0     dmesg.4.gz  landscape  sysstat               wtmp
 alternatives.log  audit     cloud-init.log         dmesg.1.gz  dpkg.log    lastlog    ubuntu-advantage.log
 amazon            auth.log  dist-upgrade           dmesg.2.gz  journal     private    unattended-upgrades
 apport.log        btmp      dmesg                  dmesg.3.gz  kern.log    syslog     upgrade
+ubuntu@thm-vm:/var/log$
 ubuntu@thm-vm:/var/log$ :  cat /var/log/syslog | grep "com"
 2026-02-26T01:56:08.936305+00:00 thm-vm systemd-timesyncd[281]: Timed out waiting for reply from 91.189.91.157:123 (ntp.ubuntu.com).
 
