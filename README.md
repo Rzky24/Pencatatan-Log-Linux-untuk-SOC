@@ -219,12 +219,28 @@ Jawablah pertanyaan-pertanyaan di bawah ini.
 Berdasarkan log pengelola paket VM,
 versi unzip mana  yang terpasang pada sistem?
 
-6.0-28ubuntu4.1
+cara : cd /var/log/
+       ls
+       cat dpkg.log | grep unzip 
+<img width="1328" height="556" alt="image" src="https://github.com/user-attachments/assets/fd198b22-7d15-46ea-a682-e2b516e1b869" />
+       
+
+
+jawaban : 6.0-28ubuntu4.1
 
 Jawaban yang Benar
 Bendera apa yang Anda lihat di riwayat bash salah satu pengguna?
 
-THM{note_to_remember}
+cara : sudo su  untuk akses exsekusi 
+       cd /root  untuk masuk ke file root
+       ls -la untuk manampilkan isi file tersembunyi
+       dan muncul hasil yang di cari 
+
+<img width="659" height="542" alt="image" src="https://github.com/user-attachments/assets/c230e674-32e7-4fc6-9052-e38a66b5cd4a" />
+
+       
+
+jawaban : THM{note_to_remember}
 
 Jawaban yang Benar
 
@@ -306,21 +322,49 @@ Jawablah pertanyaan-pertanyaan di bawah ini.
 Kapan  file secret.thm dibuka untuk pertama kalinya? (BB/HH/TTY HH:BB:SS)
 Catatan: Akses ke file ini dicatat dengan kunci "file_thmsecret".
 
-08/13/25 18:36:54
+masuk sudo su untuk mode root 
+ubuntu@thm-vm:~$ sudo su
+root@thm-vm:/home/ubuntu$  ausearch -i -k file_thmsecret
+----
+type=PROCTITLE msg=audit(08/13/25 13:41:41.595:56) : proctitle=/sbin/auditctl -R /etc/audit/audit.rules 
+type=CWD msg=audit(08/13/25 13:41:41.595:56) : cwd=/ 
+
+<img width="1355" height="717" alt="image" src="https://github.com/user-attachments/assets/1f47cde9-0305-4d6c-a425-dcd6684f1c97" />
+
+
+jawaban : 08/13/25 18:36:54
 
 Jawaban yang Benar
 
 Apa nama file asli yang diunduh dari GitHub melalui wget?
 Catatan: Pembuatan proses wget dicatat dengan kunci "proc_wget".
 
-naabu_2.3.5_linux_amd64.zip
+masuk sudo su untuk mode root hak akses paling tinggi
+ubuntu@thm-vm:~$ sudo su
+root@thm-vm:/home/ubuntu$  ausearch -i -k proc_wget
+<img width="1361" height="681" alt="image" src="https://github.com/user-attachments/assets/b86601c1-e0aa-43ca-9227-b044aae2e0b9" />
+
+
+jawaban naabu_2.3.5_linux_amd64.zip
 
 Jawaban yang Benar
 
 Rentang jaringan mana yang dipindai menggunakan alat yang diunduh?
 Catatan: Tidak ada kunci khusus untuk kejadian ini, tetapi masih ada di log auditd.
 
-192.168.50.0/24
+
+root@thm-vm:/home/ubuntu$ cat /var/log/audit/audit.log | grep naabu
+<img width="1366" height="215" alt="image" src="https://github.com/user-attachments/assets/ae0ebba2-7b94-4b90-ae4a-94a535c9d482" />
+
+masuk ke mode root dulu sudo su
+root@thm-vm:/home/ubuntu$ cat /var/log/audit/audit.log | grep naabu
+type=EXECVE msg=audit(1755109754.700:1523): argc=4 a0="wget" a1="https://github.com/projectdiscovery/naabu/releases/download/v2.3.5/naabu_2.3.5_linux_amd64.zip" a2="-O" a3="/tmp/naabu.zip"
+type=EXECVE msg=audit(1755109765.214:1524): argc=2 a0="unzip" a1="naabu.zip"
+type=EXECVE msg=audit(1755109785.152:1526): argc=3 a0="chmod" a1="+x" a2="naabu"
+type=SYSCALL msg=audit(1755109791.986:1527): arch=c000003e syscall=59 success=yes exit=0 a0=6252c36af5a0 a1=6252c36af630 a2=6252f61106d8 a3=8 items=2 ppid=1499 pid=1504 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts1 ses=30 comm="naabu" exe="/tmp/naabu" subj=unconfined key="proc_all"ARCH=x86_64 SYSCALL=execve AUID="ubuntu" UID="root" GID="root" EUID="root" SUID="root" FSUID="root" EGID="root" SGID="root" FSGID="root"
+type=EXECVE msg=audit(1755109791.986:1527): argc=5 a0="./naabu" a1="-host" a2="192.168.50.0/24" a3="-top-ports" a4="100"
+
+jawaban : 192.168.50.0/24
 
 Jawaban yang Benar
 
