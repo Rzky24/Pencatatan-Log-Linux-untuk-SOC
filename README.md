@@ -81,7 +81,7 @@ Jawaban yang Benar
 
 Apa isi pesan kernel dari Yama di /var/log/syslog ?
 
-ubuntu@thm-vm:/var/log$ cat /var/log/syslog | grep "yama"
+ubuntu@thm-vm: cat /var/log/syslog | grep yama
 2025-08-13T13:41:48.176648+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
 2025-08-13T13:57:19.908951+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
 2025-08-28T14:02:07.691518+00:00 thm-vm kernel: LSM: initializing lsm=lockdown,capability,landlock,yama,apparmor,ima,evm
@@ -234,6 +234,7 @@ Bendera apa yang Anda lihat di riwayat bash salah satu pengguna?
 cara : sudo su  untuk akses exsekusi 
        cd /root  untuk masuk ke file root
        ls -la untuk manampilkan isi file tersembunyi
+       cat .bash_history
        dan muncul hasil yang di cari 
 
 <img width="659" height="542" alt="image" src="https://github.com/user-attachments/assets/c230e674-32e7-4fc6-9052-e38a66b5cd4a" />
